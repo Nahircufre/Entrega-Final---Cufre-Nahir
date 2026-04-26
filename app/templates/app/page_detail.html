@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+<h2>{{ object.titulo }}</h2>
+
+<p>{{ object.subtitulo }}</p>
+
+{% if object.imagen %}
+    <img src="{{ object.imagen.url }}" width="400">
+{% endif %}
+
+<p>{{ object.contenido|safe }}</p>
+
+<p>{{ object.fecha }}</p>
+
+<hr>
+
+<a href="/pages/{{ object.id }}/edit/">Editar</a>
+<br><br>
+<a href="/pages/{{ object.id }}/delete/">Eliminar</a>
+
+{% endblock %}

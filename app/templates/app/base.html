@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi App</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background-color: #1abc9c;
+        }
+
+        .contenido {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Mi sitio Django 🚀</h1>
+
+<nav>
+    <a href="/">Inicio</a>
+    <a href="/about/">About</a>
+    <a href="/pages/">Pages</a>
+
+    <a href="/accounts/login/">Login</a>
+    <a href="/accounts/signup/">Signup</a>
+    <a href="/accounts/profile/">Perfil</a>
+    <a href="/accounts/logout/">Logout</a>
+
+    {% if user.is_authenticated %}
+        <span style="color:white; margin-left:20px;">
+            Usuario logueado: {{ user.username }}
+        </span>
+    {% endif %}
+</nav>
+
+{% if messages %}
+    {% for message in messages %}
+        <div style="background:#d4edda; color:#155724; padding:10px; margin:10px;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="contenido">
+    {% block contenido %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

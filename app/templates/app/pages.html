@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+<h2>Blog Pages</h2>
+
+<a href="/pages/create/">Crear nueva página</a>
+
+{% if pages %}
+    {% for page in pages %}
+        <div>
+            <h3>{{ page.titulo }}</h3>
+            <p>{{ page.subtitulo }}</p>
+
+            <a href="/pages/{{ page.id }}/">Leer más</a>
+        </div>
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>No hay páginas aún.</p>
+{% endif %}
+
+{% endblock %}
