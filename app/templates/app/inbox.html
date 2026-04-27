@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+<h2>Inbox</h2>
+
+{% for m in mensajes %}
+    <div>
+        <p><b>De:</b> {{ m.remitente }}</p>
+        <p>{{ m.contenido }}</p>
+        <hr>
+    </div>
+{% empty %}
+    <p>No hay mensajes recibidos</p>
+{% endfor %}
+
+{% endblock %}

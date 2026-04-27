@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+<h2>Enviados</h2>
+
+{% for m in mensajes %}
+    <div>
+        <p><b>Para:</b> {{ m.destinatario }}</p>
+        <p>{{ m.contenido }}</p>
+        <hr>
+    </div>
+{% empty %}
+    <p>No enviaste mensajes</p>
+{% endfor %}
+
+{% endblock %}
