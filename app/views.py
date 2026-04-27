@@ -3,6 +3,9 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from accounts.models import Profile
+from .forms import ProfileForm
+from django.contrib.auth.decorators import login_required
 
 from .models import Page, Mensaje
 from .forms import PageForm
@@ -88,3 +91,27 @@ class MensajeCreateView(LoginRequiredMixin, CreateView):
 class MensajeDetailView(LoginRequiredMixin, DetailView):
     model = Mensaje
     template_name = 'app/mensaje_detail.html'
+
+
+
+@login_required
+def profile(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'accounts/profile.html', {'profile': profile})
+
+
+
+@login_required
+def edit_profile(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Perfil actualizado correctamente ✅")
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
+
+    return render(request, 'accounts/edit_profile.html', {'form': form})

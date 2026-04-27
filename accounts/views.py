@@ -4,6 +4,10 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from .models import Profile
+from .forms import ProfileForm
+
+
 def signup(request):
     form = UserCreationForm(request.POST or None)
 
@@ -13,7 +17,6 @@ def signup(request):
             login(request, user)
 
             messages.success(request, "Usuario creado correctamente ✅")
-
             return redirect('index')
 
     return render(request, 'accounts/signup.html', {'form': form})
@@ -31,8 +34,25 @@ def login_view(request):
     return render(request, 'accounts/login.html', {'form': form})
 
 
+# 👤 PERFIL
 @login_required
 def profile(request):
-    return render(request, 'accounts/profile.html')
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'accounts/profile.html', {'profile': profile})
 
-# Create your views here.
+
+# ✏️ EDITAR PERFIL
+@login_required
+def edit_profile(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Perfil actualizado correctamente ✅")
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
+
+    return render(request, 'accounts/edit_profile.html', {'form': form})

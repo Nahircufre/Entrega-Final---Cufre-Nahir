@@ -4,7 +4,22 @@
 
 <h2>Mi Perfil</h2>
 
-<p>Usuario: {{ user.username }}</p>
-<p>Email: {{ user.email }}</p>
+<p><strong>Usuario:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+
+<hr>
+
+{% if profile.avatar %}
+    <img src="{{ profile.avatar.url }}" width="150" style="border-radius:50%;">
+{% else %}
+    <p>No hay avatar cargado</p>
+{% endif %}
+
+<p><strong>Bio:</strong></p>
+<p>{{ profile.bio }}</p>
+
+<br>
+
+<a href="/accounts/edit/">✏️ Editar perfil</a>
 
 {% endblock %}
