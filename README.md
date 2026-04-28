@@ -94,6 +94,7 @@ mi_proyecto/
 ├── media/
 ├── manage.py
 └── requirements.txt
+La mensajería fue implementada dentro de la app principal mediante el modelo Mensaje y vistas específicas para inbox, enviados y detalle.
 ```
 
 ---
