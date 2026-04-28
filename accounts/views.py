@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .models import Profile
-from .forms import ProfileForm
+from .forms import ProfileForm, UserEditForm
+
 
 
 def signup(request):
@@ -22,6 +23,7 @@ def signup(request):
     return render(request, 'accounts/signup.html', {'form': form})
 
 
+
 def login_view(request):
     form = AuthenticationForm(request, data=request.POST or None)
 
@@ -34,25 +36,37 @@ def login_view(request):
     return render(request, 'accounts/login.html', {'form': form})
 
 
-# 👤 PERFIL
+
 @login_required
 def profile(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
-    return render(request, 'accounts/profile.html', {'profile': profile})
+
+    return render(request, 'accounts/profile.html', {
+        'profile': profile
+    })
 
 
-# ✏️ EDITAR PERFIL
+
 @login_required
 def edit_profile(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
 
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
+        user_form = UserEditForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+
             messages.success(request, "Perfil actualizado correctamente ✅")
             return redirect('profile')
-    else:
-        form = ProfileForm(instance=profile)
 
-    return render(request, 'accounts/edit_profile.html', {'form': form})
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileForm(instance=profile)
+
+    return render(request, 'accounts/edit_profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
