@@ -2,24 +2,72 @@
 
 {% block contenido %}
 
-<h2>Páginas</h2>
+<h2>Páginas del Blog</h2>
 
-<a href="/pages/create/">➕ Crear página</a>
+<br>
 
-<hr>
+<a href="/pages/create/" style="
+    text-decoration:none;
+    background:#2c3e50;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+">
+    ➕ Crear página
+</a>
+
+<br><br>
 
 {% if pages %}
 
-    {% for page in pages %}
+    <div style="
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:25px;
+    ">
 
-        <h3>{{ page.titulo }}</h3>
-        <p>{{ page.subtitulo }}</p>
+        {% for page in pages %}
 
-        <a href="/pages/{{ page.id }}/">Leer más</a>
+            <div style="
+                background:white;
+                width:320px;
+                padding:20px;
+                border-radius:12px;
+                box-shadow:0 4px 10px rgba(0,0,0,0.1);
+                text-align:left;
+            ">
 
-        <hr>
+                {% if page.imagen %}
+                    <img src="{{ page.imagen.url }}" width="100%" style="
+                        border-radius:10px;
+                        margin-bottom:15px;
+                    ">
+                {% endif %}
 
-    {% endfor %}
+                <h3>{{ page.titulo }}</h3>
+
+                <p style="color:#666;">
+                    {{ page.subtitulo }}
+                </p>
+
+                <br>
+
+                <a href="/pages/{{ page.id }}/" style="
+                    text-decoration:none;
+                    background:#1abc9c;
+                    color:white;
+                    padding:8px 14px;
+                    border-radius:6px;
+                ">
+                    Leer más
+                </a>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
 
 {% else %}
 

@@ -49,7 +49,7 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
 
 class PageDeleteView(LoginRequiredMixin, DeleteView):
     model = Page
-    template_name = 'app/page_delete.html'
+    template_name = 'app/page_confirm_delete.html'
     success_url = reverse_lazy('pages')
 
 

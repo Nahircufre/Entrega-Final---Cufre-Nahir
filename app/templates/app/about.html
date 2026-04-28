@@ -1,6 +1,60 @@
 {% extends 'app/base.html' %}
 
 {% block contenido %}
-<h2>Acerca de mí</h2>
-<p>Hola, soy Nahir y esta es mi página blog hecha con Django.</p>
+
+<div style="
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+">
+
+    <div style="
+        background:white;
+        width:700px;
+        padding:40px;
+        border-radius:16px;
+        box-shadow:0 6px 18px rgba(0,0,0,0.1);
+        text-align:left;
+    ">
+
+        <h2 style="
+            text-align:center;
+            color:#2c3e50;
+            margin-bottom:25px;
+        ">
+            👋 Acerca de mí
+        </h2>
+
+        <p style="
+            font-size:17px;
+            line-height:1.8;
+            color:#555;
+        ">
+              Hola, soy Nahir. Estudié Software Tester QA y actualmente me estoy formando
+            en Data Science.
+        </p>
+
+        <p style="
+            font-size:17px;
+            line-height:1.8;
+            color:#555;
+        ">
+            Este proyecto fue desarrollado utilizando Django como entrega final,
+            integrando funcionalidades como autenticación de usuarios, perfiles,
+            mensajería y gestión de publicaciones estilo blog.
+        </p>
+
+        <p style="
+            font-size:17px;
+            line-height:1.8;
+            color:#555;
+        ">
+            Me interesa seguir creciendo profesionalmente dentro del mundo IT,
+            especialmente en QA, automatización y Datos.
+        </p>
+
+    </div>
+
+</div>
+
 {% endblock %}

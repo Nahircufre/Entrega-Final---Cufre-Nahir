@@ -2,16 +2,54 @@
 
 {% block contenido %}
 
-<h2>Inbox</h2>
+<h2>📥 Inbox</h2>
 
-{% for m in mensajes %}
-    <div>
-        <p><b>De:</b> {{ m.remitente }}</p>
-        <p>{{ m.contenido }}</p>
-        <hr>
+<br>
+
+{% if mensajes %}
+
+    <div style="
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:20px;
+    ">
+
+        {% for m in mensajes %}
+
+            <div style="
+                background:white;
+                width:600px;
+                padding:20px;
+                border-radius:12px;
+                box-shadow:0 4px 10px rgba(0,0,0,0.1);
+                text-align:left;
+            ">
+
+                <p style="margin:0; color:#555;">
+                    <strong>De:</strong> {{ m.remitente }}
+                </p>
+
+                <p style="margin-top:8px; color:#888;">
+                    {{ m.fecha }}
+                </p>
+
+                <hr>
+
+                <p style="font-size:16px;">
+                    {{ m.contenido }}
+                </p>
+
+            </div>
+
+        {% endfor %}
+
     </div>
-{% empty %}
-    <p>No hay mensajes recibidos</p>
-{% endfor %}
+
+{% else %}
+
+    <p>No hay mensajes recibidos 📭</p>
+
+{% endif %}
 
 {% endblock %}
