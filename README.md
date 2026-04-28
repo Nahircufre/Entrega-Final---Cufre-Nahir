@@ -1,217 +1,190 @@
-Mi Primera Página - Nahir Cufré
+# Proyecto Final Django — Blog + Mensajería + Perfil de Usuario
 
-App: Blog con Django
+## 📌 Descripción
 
-Este proyecto es una aplicación web desarrollada con Django que permite crear y administrar páginas tipo blog, con sistema de autenticación, perfiles y navegación completa.
+Este proyecto fue desarrollado con Django como entrega final.
 
---------------------------------------------------
+La aplicación permite:
 
-FUNCIONALIDADES PRINCIPALES
+* Crear y administrar páginas tipo blog.
+* Registro y autenticación de usuarios.
+* Perfil de usuario editable.
+* Subida de avatar e información personal.
+* Sistema de mensajería entre usuarios.
+* Editor de texto enriquecido mediante CKEditor.
 
-🏠 Página de inicio
-Ruta: /
+---
 
-- Página principal del sitio
-- Navegación hacia todas las secciones
-- Diseño base reutilizable
+# 🚀 Funcionalidades
 
---------------------------------------------------
+## 👤 Sistema de Usuarios
 
-👩 Acerca de mí
-Ruta: /about/
+* Registro de usuario.
+* Login.
+* Logout.
+* Perfil de usuario.
+* Edición de perfil.
+* Avatar personalizado.
+* Bio personalizada.
 
-- Vista informativa sobre el dueño del sitio
-- Acceso visible desde la barra de navegación
+---
 
---------------------------------------------------
+## 📄 CRUD de Páginas
 
-📚 Pages / Blog
-Ruta: /pages/
+Los usuarios pueden:
 
-Permite:
+* Crear páginas.
+* Ver listado de páginas.
+* Ver detalle de una página.
+* Editar páginas.
+* Eliminar páginas.
 
-- Visualizar todas las páginas creadas
-- Mostrar título y subtítulo
-- Acceder al detalle mediante “Leer más”
-- Mostrar mensaje si no existen páginas
+Cada página contiene:
 
---------------------------------------------------
+* Título
+* Subtítulo
+* Contenido enriquecido con CKEditor
+* Imagen
+* Fecha de creación
 
-📝 Crear página
-Ruta: /pages/create/
+---
 
-Permite:
+## 💬 Sistema de Mensajería
 
-- Crear una nueva página del blog
-- Agregar título
-- Agregar subtítulo
-- Escribir contenido enriquecido con CKEditor
-- Subir imagen
-- Guardar fecha automáticamente
+Los usuarios autenticados pueden:
 
---------------------------------------------------
+* Enviar mensajes.
+* Ver bandeja de entrada.
+* Ver mensajes enviados.
+* Abrir detalle del mensaje.
 
-🔎 Detalle de página
-Ruta: /pages/<id>/
+---
 
-Permite:
+# 🛠️ Tecnologías Utilizadas
 
-- Ver contenido completo
-- Mostrar imagen
-- Visualizar fecha de creación
-- Acceder a editar o eliminar
+* Python 3.13
+* Django 6
+* SQLite3
+* CKEditor
+* Pillow
+* HTML
+* CSS
 
---------------------------------------------------
+---
 
-✏️ Editar página
-Ruta: /pages/<id>/edit/
+# 📂 Estructura del Proyecto
 
-- Solo disponible para usuarios logueados
-- Permite modificar contenido existente
-
---------------------------------------------------
-
-🗑️ Eliminar página
-Ruta: /pages/<id>/delete/
-
-- Solo disponible para usuarios logueados
-- Confirmación antes de eliminar
-
---------------------------------------------------
-
-🔐 Sistema de usuarios
-
-Registro
-Ruta: /accounts/signup/
-
-Permite:
-
-- Crear usuario
-- Login automático luego del registro
-
---------------------------------------------------
-
-Login
-Ruta: /accounts/login/
-
-Permite:
-
-- Iniciar sesión
-
---------------------------------------------------
-
-Logout
-Ruta: /accounts/logout/
-
-Permite:
-
-- Cerrar sesión
-
---------------------------------------------------
-
-Perfil
-Ruta: /accounts/profile/
-
-Permite:
-
-- Visualizar usuario logueado
-- Ver email y datos básicos
-
---------------------------------------------------
-
-🎨 Interfaz
-
-- Navbar superior
-- Template base reutilizable
-- Diseño simple y limpio
-- Templates heredados
-- Navegación visible entre secciones
-
---------------------------------------------------
-
-⚙️ Tecnologías utilizadas
-
-- Python
-- Django
-- HTML
-- CSS básico
-- SQLite
-- Django CKEditor
-- Pillow
-
---------------------------------------------------
-
-📂 Estructura principal
-
+```text
 mi_proyecto/
 │
-├── app/
 ├── accounts/
-├── templates/
+│   ├── models.py
+│   ├── views.py
+│   ├── forms.py
+│   ├── urls.py
+│   └── templates/
+│
+├── app/
+│   ├── models.py
+│   ├── views.py
+│   ├── forms.py
+│   ├── urls.py
+│   └── templates/
+│
 ├── media/
-├── static/
-└── db.sqlite3
+├── manage.py
+└── requirements.txt
+```
 
---------------------------------------------------
+---
 
-▶️ Orden para probar la aplicación
+# ⚙️ Instalación
 
-1. Ejecutar servidor:
+## 1️⃣ Clonar repositorio
 
+```bash
+git clone https://github.com/Nahircufre/Entrega-Final---Cufre-Nahir
+```
+
+---
+
+## 2️⃣ Crear entorno virtual
+
+```bash
+python -m venv venv
+```
+
+---
+
+## 3️⃣ Activar entorno virtual
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+---
+
+## 4️⃣ Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 5️⃣ Aplicar migraciones
+
+```bash
+python manage.py migrate
+```
+
+---
+
+## 6️⃣ Ejecutar servidor
+
+```bash
 python manage.py runserver
+```
 
-2. Ingresar a:
+---
 
-http://127.0.0.1:8000/
+# 🔐 Usuario Admin
 
---------------------------------------------------
+Para crear un administrador:
 
-🌐 Rutas principales
+```bash
+python manage.py createsuperuser
+```
 
-Inicio
-/
+Luego acceder a:
 
-About
-/about/
+```text
+http://127.0.0.1:8000/admin/
+```
 
-Pages
-/pages/
+---
 
-Crear página
-/pages/create/
 
-Login
-/accounts/login/
 
-Signup
-/accounts/signup/
+# ✍️ Autor
 
-Perfil
-/accounts/profile/
+**Nahir Cufré**
 
-Logout
-/accounts/logout/
+Proyecto desarrollado como entrega final  para Python utilizando Django.
+Para Coderhouse
 
-Admin Django
-/admin/
+---
 
---------------------------------------------------
+# ✅ Estado del Proyecto
 
-✅ Funcionalidades implementadas
+Proyecto funcional con:
 
-- Home
-- About
-- CRUD completo de páginas
-- Login
-- Logout
-- Signup
-- Perfil
-- Upload de imágenes
-- CKEditor
-- Navbar
-- Herencia de templates
-- CBV (Class Based Views)
-- LoginRequiredMixin
-- Decorators
-- Panel Admin
-- Mensajes de confirmación
+* Autenticación
+* CRUD
+* Perfil con avatar
+* Mensajería
+* Editor enriquecido
+* Manejo de archivos multimedia
+

@@ -5,6 +5,8 @@
 <h2>Mi Perfil</h2>
 
 <p><strong>Usuario:</strong> {{ user.username }}</p>
+<p><strong>Nombre:</strong> {{ user.first_name }}</p>
+<p><strong>Apellido:</strong> {{ user.last_name }}</p>
 <p><strong>Email:</strong> {{ user.email }}</p>
 
 <hr>
@@ -21,5 +23,6 @@
 <br>
 
 <a href="/accounts/edit/">✏️ Editar perfil</a>
+<a href="/accounts/password/">🔒 Cambiar contraseña</a>
 
 {% endblock %}
