@@ -4,6 +4,9 @@
 
 Este proyecto fue desarrollado con Django como entrega final.
 
+Video Demo de la app: https://drive.google.com/file/d/1-Tu1r0219FZb42PKvvZiqYhMF7uGkbhv/view?usp=sharing
+
+
 La aplicación permite:
 
 * Crear y administrar páginas tipo blog.
